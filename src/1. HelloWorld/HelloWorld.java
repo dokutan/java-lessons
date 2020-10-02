@@ -1,6 +1,9 @@
 /* HelloWorld.java
  * 2020-09-18
  * CC0 or 0-BSD
+ *
+ * javac HelloWorld.java
+ * java HelloWorld
  */
 
 // single line comment
