@@ -11,12 +11,13 @@ public class Colors{
 
 	public static final String escape_start = "\u001b[";
 	public static final String escape_color256_start = "\u001b[48:5:";
+	public static final String escape_color24bit_start = "\u001b[48:2:";
 	public static final String escape_end = "m";
 	public static final String escape_reset = "\u001b[0m";
 	
 	public static void main( String[] args ){
 		
-		/// 3/4-bit indexed colors
+		// 3/4-bit indexed colors
 		for( int color = 0; color < 8; color++ )
 			System.out.print(escape_start + (40+color) + escape_end + " " + color + " ");
 		System.out.println(escape_reset);
@@ -25,7 +26,7 @@ public class Colors{
 		System.out.println(escape_reset);
 		System.out.println();
 		
-		/// 8-bit indexed colors
+		// 8-bit indexed colors
 		DecimalFormat df = new DecimalFormat("000");	
 		int count = 0;
 		for( int color = 0; color < 256; color++ ){
@@ -37,6 +38,46 @@ public class Colors{
 				count = 0;
 			}
 		}
-
+		
+		// 24-bit color (red gradient)
+		count = 0;
+		System.out.println();
+		for( int color = 0; color <= 256; color++ ){
+			System.out.print(escape_color24bit_start + color + ":0:0" + escape_end + " ");
+			
+			count++;
+			if( count == 64 ){
+				System.out.println(escape_reset);
+				count = 0;
+			}
+		}
+		
+		// 24-bit color (green gradient)
+		count = 0;
+		System.out.println();
+		for( int color = 0; color <= 256; color++ ){
+			System.out.print(escape_color24bit_start + "0:" + color + ":0" + escape_end + " ");
+			
+			count++;
+			if( count == 64 ){
+				System.out.println(escape_reset);
+				count = 0;
+			}
+		}
+		
+		// 24-bit color (blue gradient)
+		count = 0;
+		System.out.println();
+		for( int color = 0; color <= 256; color++ ){
+			System.out.print(escape_color24bit_start + "0:0:" + color + escape_end + " ");
+			
+			count++;
+			if( count == 64 ){
+				System.out.println(escape_reset);
+				count = 0;
+			}
+		}
+		
+		System.out.println();
 	}
 }
