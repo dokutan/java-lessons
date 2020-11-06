@@ -53,22 +53,26 @@ public class Factorial {
 		
 		// check args
 		if( args.length != 2 ) {
-			System.err.println("2 Arguments required");
+			System.err.println("2 Arguments required:\nnumber d|w|f|r|b");
 			System.exit(1);
 		}
 
-		// variables
+		// variable
 		int n = Integer.valueOf( args[0] );
 		
-		if( args[1].matches( "d.*" ) )
+		if( args[1].matches( "d.*" ) ) // do while
 			System.out.println( factorial_do_while( n ) );
-		else if( args[1].matches( "w.*" ) )
+
+		else if( args[1].matches( "w.*" ) ) // while
 			System.out.println( factorial_while( n ) );
-		else if( args[1].matches( "f.*" ) )
+
+		else if( args[1].matches( "f.*" ) ) // for
 			System.out.println( factorial_for( n ) );
-		else if( args[1].matches( "r.*" ) )
+
+		else if( args[1].matches( "r.*" ) ) // recursion
 			System.out.println( factorial_recursion( n ) );
-		else if( args[1].matches( "b.*" ) ){
+
+		else if( args[1].matches( "b.*" ) ){ // benchmark
 			
 			long start, end;	
 			
@@ -82,24 +86,19 @@ public class Factorial {
 			for( int i = 0; i < n; i++ )
 			       factorial_while( i );
 			end = System.currentTimeMillis();
-			System.out.println( "while:\t\t" + (end-start)	+ " ms" );
+			System.out.println( "while:\t\t" + (end-start) + " ms" );
 			
 			start = System.currentTimeMillis();
 			for( int i = 0; i < n; i++ )
 			       factorial_for( i );
 			end = System.currentTimeMillis();
-			System.out.println( "for:\t\t" + (end-start)	+ " ms" );
+			System.out.println( "for:\t\t" + (end-start) + " ms" );
 
 			start = System.currentTimeMillis();
 			for( int i = 0; i < n; i++ )
 			       factorial_recursion( i );
 			end = System.currentTimeMillis();
-			System.out.println( "recursion:\t" + (end-start)	+ " ms" );
-
-
+			System.out.println( "recursion:\t" + (end-start) + " ms" );
 		}
-
 	}
-
-
 }
